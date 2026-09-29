@@ -5,6 +5,7 @@ const { transactionCreateController, getAllTransactionController, deleteTransact
 const router = express.Router();
 
 router.post("/create", authMiddleware, transactionCreateController)
+
 router.get('/getAll',authMiddleware, getAllTransactionController)
 
 router.delete('/delete/:id',authMiddleware, deleteTransactionController)
