@@ -198,6 +198,7 @@ const transactionSummaryController = async (req, res) => {
                 totalExpenses += amount;
             }
         });
+        
 
         const balance = totalIncome - totalExpenses;
 
