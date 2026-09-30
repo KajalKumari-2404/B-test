@@ -178,4 +178,47 @@ const deleteTransactionController = async (req, res) => {
 }
 
 
-module.exports = {transactionCreateController, getAllTransactionController, deleteTransactionController}
+const transactionSummaryController = async (req, res) => {
+    try {
+
+        const transactions = await transactionModel.find({});
+
+        let totalIncome = 0;
+        let totalExpenses = 0;
+
+        transactions.forEach((transaction) => {
+
+            const amount = Number(transaction.amount);
+
+            if (transaction.type === "income") {
+                totalIncome += amount;
+            }
+
+            if (transaction.type === "expense") {
+                totalExpenses += amount;
+            }
+        });
+
+        const balance = totalIncome - totalExpenses;
+
+        res.status(200).send({
+            success: true,
+            totalIncome,
+            totalExpenses,
+            balance,
+            totalTransactions: transactions.length
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+        return res.status(500).send({
+            success: false,
+            message: "Error in summary API",
+            error: error.message
+        });
+    }
+};
+
+module.exports = {transactionCreateController, getAllTransactionController, deleteTransactionController,transactionSummaryController }
