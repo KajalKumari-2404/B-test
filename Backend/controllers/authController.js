@@ -48,7 +48,6 @@ const registerController = async (req,res) => {
     }
 }
 
-
 const loginController = async (req, res) => {
     try{
     const {email, password} = req.body

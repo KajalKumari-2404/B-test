@@ -197,8 +197,7 @@ const transactionSummaryController = async (req, res) => {
             if (transaction.type === "expense") {
                 totalExpenses += amount;
             }
-        });
-        
+        }) 
 
         const balance = totalIncome - totalExpenses;
 
