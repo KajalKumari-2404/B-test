@@ -46,7 +46,7 @@ const registerController = async (req,res) => {
             error
         })
     }
-}
+};
 
 const loginController = async (req, res) => {
     try{
