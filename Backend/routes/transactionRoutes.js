@@ -4,7 +4,7 @@ const { transactionCreateController, getAllTransactionController, deleteTransact
 
 const router = express.Router();
 
-router.post("/create", authMiddleware, transactionCreateController)
+router.post("/create", authMiddleware, transactionCreateController);
 
 router.get('/getAll',authMiddleware, getAllTransactionController)
 
